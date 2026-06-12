@@ -1,0 +1,134 @@
+@import url(https://fonts.bunny.net/css?family=jura:300,500);
+@layer base, controls, demo;
+
+@layer demo{
+    :root{
+        --player-transition-duration: 500ms;
+        --player-transition-easing: ease-in-out;
+        --player-color: white;
+        --player-color-gk: #333; /*goalkeeper*/
+        --player-size: min(5vw, 50px);
+    }
+
+    .wrapper{
+        display: grid;
+        gap: 1rem;
+        >*{
+            /*outline: 1px dashed red;*/
+        }
+    }
+
+    h1{
+        text-align: center;
+        font-size: 1rem;
+    }
+
+    .pitch{
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(9, 1fr);
+        width: min(90vw, 800px);
+        aspect-ratio: 3 / 2;
+        position: relative;
+        background:
+            /*linear-gradient(90deg, #fff 1px, #0000 0) 50% no-repeat,*/
+            /*linear-gradient(180deg, #fff 1px, #0000 0) 50% no-repeat,*/
+            
+        radial-gradient(1q,#0000 5w, #ffff 0 calc(5w + 1px), #0000 0),
+        repeating-linear-gradient(90deg, #3fae5a 0 5vw, #38a352 0 10vw);
+        border: 1px solid white;
+
+        &::after{
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 1px;
+            height: 100%;
+            background: white;
+        }
+}
+
+/*anchor positions - theese are what changed according to the formation*/
+
+.position {
+    &.gk{ anchor-name: --gk; }
+    &.lb{ anchor-name: --lb; }
+    &.lcb{ anchor-name: --lcb; }
+    &.rcb{ anchor-name: --rcb; }
+    &.rb{ anchor-name: --rb; }
+    &.lm{ anchor-name: --lm; }
+    &.cm{ anchor-name: --cm; }
+    &.rm{ anchor-name: --rm; }
+    &.lw{ anchor-name: --lw; }
+    &.st{ anchor-name: --st; }
+    &.rw{ anchor-name: --rw; }
+}
+
+/*players - follow anchors*/
+.player{
+    position: absolute;
+    inset: anchor(center);
+    translate: -50% -50%;
+    display: grid;
+    place-content: center;
+    color: var(--player-color);
+    transition: inset var(--player-transition-duration) var(--player-transition-easing);
+    /*outline: 1px dashed red;*/
+    width: var(--player-size);
+    aspect-ratio: 1;
+    svg{
+        width: 100%;
+        height: 100%;
+    }
+        /*bind players to anchors - these don't change but will
+        transition as their anchors are repositioned*/
+
+        &.p1{ position-anchor: --gk; color: var(--player-color-gk); }//goalkeeper
+        &.p2{ position-anchor: --lb; }
+        &.p3{ position-anchor: --lcb; } 
+        &.p4{ position-anchor: --rcb; }
+        &.p5{ position-anchor: --rb; }
+        &.p6{ position-anchor: --lm; }
+        &.p7{ position-anchor: --cm; }
+        &.p8{ position-anchor: --rm; }
+        &.p9{ position-anchor: --lw; }
+        &.p10{ position-anchor: --st; }
+        &.p11{ position-anchor: --rw; }
+}
+
+/*Define ANCHOR position according to checked radio button*/
+/*goalkeep always in same place column*/
+
+.gk { grid-area: 5 / 1; }
+
+/*4-3-3*/
+#f433:checked ~ .pitch {
+    .lb { grid-area: 2 / 2; }
+    .lcb { grid-area: 4 / 3; }
+    .rcb { grid-area: 6 / 3; }
+    .rb { grid-area: 8 / 2; }
+
+    .lm { grid-area: 2 / 5; }
+    .cm { grid-area: 5 / 5; }
+    .rm { grid-area: 8 / 5; }
+
+    .lw { grid-area: 2 / 7; }
+    .st { grid-area: 5 / 7; }
+    .rw { grid-area: 8 / 7; }
+}
+
+/*4-4-2*/
+#f442:checked ~ .pitch {
+    .lb { grid-area: 2 / 2; }
+    .lcb { grid-area: 4 / 3; }
+    .rcb { grid-area: 6 / 3; }
+    .rb { grid-area: 8 / 2; }
+
+    .lm { grid-area: 2 / 5; }
+    .cm { grid-area: 5 / 5; }
+    .rm { grid-area: 8 / 5; }
+
+    .lw { grid-area: 2 / 7; }
+    .st { grid-area: 5 / 7; }
+    .rw { grid-area: 8 / 7; }
+}
