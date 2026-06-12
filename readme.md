@@ -1,14 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Formation</title>
+    <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div>
+        <input type ="radio" name="formation" class="visually-hidden" id="f433" checked>
+        <input type ="radio" name="formation" class="visually-hidden" id="f442" checked>
+        <input type ="radio" name="formation" class="visually-hidden" id="f352" checked>
+        <input type ="radio" name="formation" class="visually-hidden" id="f4321" checked>
+        <input type ="radio" name="formation" class="visually-hidden" id="f532" checked>
+
+    </div>
+
+    <h1>Team Formation</h1>
+
+    <div class="controls">
+        <label for="f433">4-3-3</label>
+        <label for="f442">4-4-2</label>
+        <label for="f352">3-5-2</label>
+        <label for="f4321">4-3-2-1</label>
+        <label for="f532">5-3-2</label>
+    </div>
+
+    <div class="pitch">
+
+        <!--anchored positions-->
+
+        <div class="position gk"></div>
+
+        <div class="position lb"></div>
+        <div class="position lcb"></div>
+        <div class="position rcb"></div>
+        <div class="position rb"></div>
+
+        <div class="position lm"></div>
+        <div class="position cm"></div>
+        <div class="position rm"></div>
+
+        <div class="position lw"></div>
+        <div class="position st"></div>
+        <div class="position rw"></div>
+
+
+        <!--players-->
+
+        <div class="player p1"><svg><use href="#player-icon"></use></svg></div>
+        <div class="player p2"><svg><use href="#player-icon"></use></svg></div>
+        <div class="player p3"><svg><use href="#player-icon"></use></svg></div>
+        <div class="player p4"><svg><use href="#player-icon"></use></svg></div>
+        <div class="player p5"><svg><use href="#player-icon"></use></svg></div>
+        <div class="player p6"><svg><use href="#player-icon"></use></svg></div>
+        <div class="player p7"><svg><use href="#player-icon"></use></svg></div>
+        <div class="player p8"><svg><use href="#player-icon"></use></svg></div>
+        <div class="player p9"><svg><use href="#player-icon"></use></svg></div>
+        <div class="player p10"><svg><use href="#player-icon"></use></svg></div>
+        <div class="player p11"><svg><use href="#player-icon"></use></svg></div>
+
+        </div>
+    </div>
+
+     <svg width="0" height="0" style="position:absolute">
+            <symbol id="player-icon" viewBox="0 0 16 16">
+                <path d="M8 7C9.65685 7 11 5.65685 11 4c11 2.34315 9.65685 1" fill="currentColor"></path>
+            </symbol>
+        </svg>
+
+        <!--
+
+<svg width="0" height="0" style="position:absolute">
+	<symbol id="player-icon" viewBox="0 0 24 24">
+		<path opacity="0.15" d="M3 7L6 4H9C9 4.39397 9.0776 4.78407 9.22836 5.14805C9.37913 5.51203 9.6001 5.84274 9.87868 6.12132C10.1573 6.3999 10.488 6.62087 10.8519 6.77164C11.2159 6.9224 11.606 7 12 7C12.394 7 12.7841 6.9224 13.1481 6.77164C13.512 6.62087 13.8427 6.3999 14.1213 6.12132C14.3999 5.84274 14.6209 5.51203 14.7716 5.14805C14.9224 4.78407 15 4.39397 15 4H18L21 7L20.5 12L18 10.5V20H6V10.5L3.5 12L3 7Z" fill="currentColor"></path>
+	<path d="M3 7L6 4H9C9 4.39397 9.0776 4.78407 9.22836 5.14805C9.37913 5.51203 9.6001 5.84274 9.87868 6.12132C10.1573 6.3999 10.488 6.62087 10.8519 6.77164C11.2159 6.9224 11.606 7 12 7C12.394 7 12.7841 6.9224 13.1481 6.77164C13.512 6.62087 13.8427 6.3999 14.1213 6.12132C14.3999 5.84274 14.6209 5.51203 14.7716 5.14805C14.9224 4.78407 15 4.39397 15 4H18L21 7L20.5 12L18 10.5V20H6V10.5L3.5 12L3 7Z" stroke="#000000" stroke-width="1" stroke-linecap="square" stroke-linejoin="round" fill="currentColor"></path>
+	</symbol>
+</svg>
+-->
+
+</body>
+</html>
+
 @import url(https://fonts.bunny.net/css?family=jura:300,500);
 @layer base, controls, demo;
 
 @layer demo {
-    :root {
-        --player-transition-duration: 500ms;
-        --player-transition-easing: ease-in-out;
-        --player-color: white;
-        --player-color-gk: #333; /*goalkeeper*/
-        --player-size: min(5vw, 50px);
-    }
+:root {
+--player-transition-duration: 500ms;
+--player-transition-easing: ease-in-out;
+--player-color: white;
+--player-color-gk: #333; /_goalkeeper_/
+--player-size: min(5vw, 50px);
+}
 
     .wrapper {
         display: grid;
@@ -30,7 +114,7 @@
         background:
             /*linear-gradient(90deg, #fff 1px, #0000 0) 50% no-repeat,*/
             /*linear-gradient(180deg, #fff 1px, #0000 0) 50% no-repeat,*/
-            radial-gradient(1Q, #0000 5w, #0000 0 calc(5w + 1px), #0000 0),
+            radial-gradient(1Q, #0000 5w, #ffff 0 calc(5w + 1px), #0000 0),
             repeating-linear-gradient(90deg, #3fae5a 0 5vw, #38a352 0 10vw);
         border: 1px solid white;
 
@@ -252,7 +336,7 @@
         }
     }
 
-    #f4321:checked ~ .pitch {
+    #f4231:checked ~ .pitch {
         .lb {
             grid-area: 2/2;
         }
@@ -322,19 +406,21 @@
             grid-area: 6/7;
         }
     }
+
 }
 
 @layer controls {
-    /* copied from this nav demo https://codepen.io/cbolson/pen/RNRxJje?editors=1000 */
-    .controls {
-        --controls-item-spacing: 1rem;
-        --controls-item-radius: 3px;
-        --controls-item-color: var(--clr-text);
-        --controls-item-color-hover: white;
-        --controls-indicator-clr: #38a352;
-        --controls-transition-duration: 200ms;
-        --controls-trans-delay: 00ms;
-        --controls-transition-easing: ease-in-out;
+/_ copied from this nav demo
+https://codepen.io/cbolson/pen/RNRxJje?editors=1000 _/
+.controls {
+--controls-item-spacing: 1rem;
+--controls-item-radius: 3px;
+--controls-item-color: var(--clr-text);
+--controls-item-color-hover: white;
+--controls-indicator-clr: #38a352;
+--controls-transition-duration: 200ms;
+--controls-trans-delay: 00ms;
+--controls-transition-easing: ease-in-out;
 
         display: flex;
         /*flex-direction: var(--controls-flex-direction, column );*/
@@ -375,8 +461,8 @@
                         --controls-transition-easing
                     );
                     transition-delay:
-                        var(--controls-trans-delay),
-                        var(--controls-trans-delay), 0ms, 0ms,
+                        var(-- controls-trans-delay),
+                        var(-- controls-trans-delay), 0ms, 0ms,
                         var(--controls-trans-delay);
                 }
 
@@ -454,60 +540,61 @@
             border-color: var(--controls-indicator-clr);
         }
     }
+
 }
 
-/*general styling not relevant for this demo*/
+/_general styling not relevant for this demo_/
 
-@layer base {
-    * {
-        box-sizing: border-box;
-    }
+@layer base { \* {
+box-sizing: border-box;
+}
 }
 
 :root {
-    color-scheme: light dark;
-    --bg-dark: rgb(24, 24, 27);
-    --txt-light: rgb(248, 244, 238);
-    --txt-dark: rgb(10, 10, 10);
-    --line-light: rgba (0 0 0 / 0.25);
-    --line-dark: rgba (255 255 255 / 0.25);
+color-scheme: light dark;
+--bg-dark: rgb(24, 24, 27);
+--txt-light: rgb(248, 244, 238);
+--txt-dark: rgb(10, 10, 10);
+--line-light: rgba (0 0 0 / 0.25);
+--line-dark: rgba (255 255 255 / 0.25);
 
     --clr-bg: light-dark(var(--bg-light), var(--bg-dark));
     --clr-txt: light-dark(var(--txt-light), var(--txt-dark));
     --clr-lines: light-dark(var(--txt-light), var(--line-dark));
+
 }
 
 body {
-    background-color: var(--clr-bg);
-    color: var(--clr-txt);
-    margin: 0;
-    padding: 2rem;
-    font-family: 'Jura', sans-serif;
-    font-size: 1rem;
-    line-height: 1.5;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 4rem;
-    container-type: normal;
+background-color: var(--clr-bg);
+color: var(--clr-txt);
+margin: 0;
+padding: 2rem;
+font-family: 'Jura', sans-serif;
+font-size: 1rem;
+line-height: 1.5;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap: 4rem;
+container-type: normal;
 
     --supports-warning-show: 0;
     --supports-warning-animation: '';
     --supports-warning-scroll: '';
 
     /*
-		@supports not (animation-timeline: auto) {
-	    --supports-warning-show: 1;
-	    --supports-warning-animation: "\A animation-timeline";
-	  }
-		*/
+    	@supports not (animation-timeline: auto) {
+        --supports-warning-show: 1;
+        --supports-warning-animation: "\A animation-timeline";
+      }
+    	*/
     /*
-		@supports not (scroll-marker-group: after) {
-	    --supports-warning-show: 1;
-	    --supports-warning-scroll: "\A  ::scroll-*";
-		}
-		*/
+    	@supports not (scroll-marker-group: after) {
+        --supports-warning-show: 1;
+        --supports-warning-scroll: "\A  ::scroll-*";
+    	}
+    	*/
 
     @container style(--supports-warning-show: 1) {
         &::before {
@@ -523,22 +610,23 @@ body {
             white-space: pre-wrap;
         }
     }
+
 }
 
 h1 {
-    margin: 0;
-    font-size: 1.2rem;
+margin: 0;
+font-size: 1.2rem;
 }
 
 .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    clip-path: inset(50%);
-    white-space: nowrap;
-    border: 0;
+position: absolute;
+width: 1px;
+height: 1px;
+padding: 0;
+margin: -1px;
+overflow: hidden;
+clip: rect(0, 0, 0, 0);
+clip-path: inset(50%);
+white-space: nowrap;
+border: 0;
 }
